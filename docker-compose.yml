@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - 5000:5000
+      - 5679:5679
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+        read_only: false
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:alpine"
+
+  worker:
+    build: .
+    command: watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A celery_app worker --loglevel=info
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+        read_only: false
+    depends_on:
+      - web
+      - redis
