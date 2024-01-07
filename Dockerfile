@@ -10,6 +10,8 @@ WORKDIR /app
 # Copier les fichiers de dépendances et installer les packages Python
 COPY requirements.txt /app/
 RUN pip install -r requirements.txt
+
+RUN pip install requests
 RUN pip install watchdog
 RUN pip install pyopenssl
 
