@@ -10,18 +10,20 @@
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <mat-toolbar color="primary">
+      <!-- Bouton Hamburger -->
       <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>angular-app</span>
     </mat-toolbar>
-    <!-- Add Content Here -->
+
+
   </mat-sidenav-content>
 </mat-sidenav-container>

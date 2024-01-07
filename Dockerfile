@@ -2,7 +2,7 @@
 FROM python:3.9 as base
 
 # Installer Tesseract OCR
-RUN apt-get update && apt-get install -y tesseract-ocr
+#RUN apt-get update && apt-get install -y tesseract-ocr
 
 # Définir le répertoire de travail
 WORKDIR /app
